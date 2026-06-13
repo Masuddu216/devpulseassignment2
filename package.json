@@ -2,7 +2,7 @@
   "name": "devpulse",
   "version": "1.0.0",
   "description": "Internal Tech Issue & Feature Tracker",
-  "main": "dist/server.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsup",
