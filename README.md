@@ -2,7 +2,7 @@
 
 A collaborative platform for software teams to report bugs, suggest features, and coordinate resolutions.
 
-**Live URL:** `https://devpulse-api.onrender.com` (update with your actual deployment URL)  
+**Live URL:** `https://devpulseassignment2.onrender.com`
 **Repository:** `https://github.com/Masuddu216/devpulseassignment2/tree/main`
 
 ---
