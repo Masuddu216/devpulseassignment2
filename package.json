@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsup",
-  "start": "node dist/server.js",
-  "dev": "tsx watch ./src/server.ts"
+    "start": "node dist/server.js",
+    "dev": "tsx watch ./src/server.ts"
   },
   "dependencies": {
     "@vercel/node": "^5.8.17",
