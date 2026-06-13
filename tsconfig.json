@@ -7,9 +7,9 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "target": "es2022",
+    "moduleResolution": "nodenext",
     "allowSyntheticDefaultImports": true,
     "types": ["node"],
     // For nodejs:
