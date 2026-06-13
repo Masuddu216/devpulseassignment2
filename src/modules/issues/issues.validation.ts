@@ -136,7 +136,9 @@ export function validateIssueFilters(query: Record<string, unknown>): IssueFilte
     throw new AppError('Validation failed', StatusCodes.BAD_REQUEST, errors);
   }
 
-  // ✅ Build object without undefined properties
+
+
+  
   const result: IssueFilters = { sort: sortRaw as IssueFilters['sort'] };
   if (type !== undefined) result.type = type;
   if (status !== undefined) result.status = status;

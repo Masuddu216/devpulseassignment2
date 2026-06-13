@@ -3,7 +3,7 @@ import type {
   CreateIssueBody,
   IssueFilters,
   IssueRecord,
-  IssueStatus,           // <-- add this
+  IssueStatus,
   ReporterInfo,
   UpdateIssueBody,
 } from './issues.types.js';
