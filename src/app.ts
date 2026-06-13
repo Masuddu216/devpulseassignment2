@@ -13,7 +13,7 @@ export function createApp(): Application {
   app.get('/', (_req, res) => {
     res.json({
       success: true,
-      message: 'DevPulse API is running',
+      message: 'The issueTrackerServer is running',
       data: null,
     });
   });
