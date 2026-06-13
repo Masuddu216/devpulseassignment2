@@ -4,7 +4,7 @@ import { env } from './env.js';
 export const pool = new Pool({
   connectionString: env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
-  max: 10,
+  max: 1,
   idleTimeoutMillis: 100000,
   connectionTimeoutMillis: 10000,
 });
