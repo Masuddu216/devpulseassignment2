@@ -1,0 +1,18 @@
+import jwt from 'jsonwebtoken';
+import { env } from '../config/env.js';
+
+export interface JwtPayload {
+  id: number;
+  name: string;
+  role: 'contributor' | 'maintainer';
+}
+
+export function signToken(payload: JwtPayload): string {
+  // Casting to any avoids the optional property strictness issue.
+  // At runtime, { expiresIn: '7d' } works perfectly.
+  return jwt.sign(payload, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN } as any);
+}
+
+export function verifyToken(token: string): JwtPayload {
+  return jwt.verify(token, env.JWT_SECRET) as JwtPayload;
+}

@@ -1,0 +1,42 @@
+export type IssueType = 'bug' | 'feature_request';
+export type IssueStatus = 'open' | 'in_progress' | 'resolved';
+
+export interface IssueRecord {
+  id: number;
+  title: string;
+  description: string;
+  type: IssueType;
+  status: IssueStatus;
+  reporter_id: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface ReporterInfo {
+  id: number;
+  name: string;
+  role: string;
+}
+
+export interface IssueWithReporter extends Omit<IssueRecord, 'reporter_id'> {
+  reporter: ReporterInfo;
+}
+
+export interface CreateIssueBody {
+  title: string;
+  description: string;
+  type: IssueType;
+}
+
+export interface UpdateIssueBody {
+  title?: string;
+  description?: string;
+  type?: IssueType;
+  status?: IssueStatus;
+}
+
+export interface IssueFilters {
+  sort: 'newest' | 'oldest';
+  type?: IssueType;
+  status?: IssueStatus;
+}
