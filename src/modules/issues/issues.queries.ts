@@ -1,4 +1,4 @@
-import { pool } from '../../config/db.js';
+import { getPool } from '../../config/db.js';
 import type {
   CreateIssueBody,
   IssueFilters,
@@ -17,7 +17,7 @@ export async function insertIssue(
     RETURNING id, title, description, type, status, reporter_id, created_at, updated_at
   `;
   const values = [data.title, data.description, data.type, data.reporterId];
-  const result = await pool.query<IssueRecord>(query, values);
+  const result = await getPool().query<IssueRecord>(query, values);
   return result.rows[0]!;
 }
 
@@ -43,7 +43,7 @@ export async function findAllIssues(filters: IssueFilters): Promise<IssueRecord[
     ${whereClause}
     ORDER BY created_at ${orderDirection}
   `;
-  const result = await pool.query<IssueRecord>(query, values);
+  const result = await getPool().query<IssueRecord>(query, values);
   return result.rows;
 }
 
@@ -53,7 +53,7 @@ export async function findIssueById(id: number): Promise<IssueRecord | null> {
     FROM issues
     WHERE id = $1
   `;
-  const result = await pool.query<IssueRecord>(query, [id]);
+  const result = await getPool().query<IssueRecord>(query, [id]);
   return result.rows[0] ?? null;
 }
 
@@ -65,7 +65,7 @@ export async function findReportersByIds(ids: number[]): Promise<ReporterInfo[]>
     FROM users
     WHERE id = ANY($1::int[])
   `;
-  const result = await pool.query<ReporterInfo>(query, [uniqueIds]);
+  const result = await getPool().query<ReporterInfo>(query, [uniqueIds]);
   return result.rows;
 }
 
@@ -102,13 +102,13 @@ export async function updateIssueById(
     WHERE id = $${values.length}
     RETURNING id, title, description, type, status, reporter_id, created_at, updated_at
   `;
-  const result = await pool.query<IssueRecord>(query, values);
+  const result = await getPool().query<IssueRecord>(query, values);
   return result.rows[0]!;
 }
 
 export async function deleteIssueById(id: number): Promise<boolean> {
   const query = `DELETE FROM issues WHERE id = $1`;
-  const result = await pool.query(query, [id]);
+  const result = await getPool().query(query, [id]);
   return (result.rowCount ?? 0) > 0;
 }
 

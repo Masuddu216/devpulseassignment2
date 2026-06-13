@@ -1,4 +1,4 @@
-import { pool } from '../../config/db.js';
+import { getPool } from '../../config/db.js';
 import type { SignupBody, UserRecord } from './auth.types.js';
 
 export async function insertUser(
@@ -11,7 +11,7 @@ export async function insertUser(
   `;
   const values = [data.name, data.email, data.password, data.role];
 
-  const result = await pool.query<UserRecord>(query, values);
+  const result = await getPool().query<UserRecord>(query, values);
   // Non-null assertion because INSERT ... RETURNING always returns a row
   return result.rows[0]!;
 }
@@ -22,7 +22,7 @@ export async function findUserByEmail(email: string): Promise<UserRecord | null>
     FROM users
     WHERE email = $1
   `;
-  const result = await pool.query<UserRecord>(query, [email]);
+  const result = await getPool().query<UserRecord>(query, [email]);
   return result.rows[0] ?? null;
 }
 
@@ -32,6 +32,6 @@ export async function findUserById(id: number): Promise<UserRecord | null> {
     FROM users
     WHERE id = $1
   `;
-  const result = await pool.query<UserRecord>(query, [id]);
+  const result = await getPool().query<UserRecord>(query, [id]);
   return result.rows[0] ?? null;
 }
