@@ -27,3 +27,13 @@ tsx / ts-node-dev	Development runner (ES modules)
 1. Clone the repository
 git clone https://github.com/Masuddu216/devpulseassignment2.git
 cd devpulse
+
+## ⚠️ Important Note for Evaluator
+
+This project is deployed on Render Free Plan.
+The server may take **30-50 seconds** to respond 
+on the first request due to cold start.
+
+Please wait and retry if the first request times out.
+
+
